@@ -40,9 +40,11 @@ class TTriangle
 			Console.Write("ні\n");
 			abc = Console.ReadLine().Split(' ');
 		}
-		a = double.Parse(abc[0]);
-		b = double.Parse(abc[1]);
-		c = double.Parse(abc[2]);
+		double[] abcD = { double.Parse(abc[0]), double.Parse(abc[1]), double.Parse(abc[2]) };
+		abcD.Sort();
+		a = abcD[0];
+		b = abcD[1];
+		c = abcD[2];
 	}
 
 	public double CalculateArea()
@@ -95,14 +97,14 @@ class TTriangle
 		Console.WriteLine($"перевірка виводу {t1.ToString()}");
 		Console.WriteLine($"площа: {t1.CalculateArea()}");
 
-		TTriangle t2 = new TTriangle(3, 3, 3);
+		TTriangle t2 = new TTriangle(2, 3, 4);
 
 		Console.WriteLine($"Мій Трикутник {t2.ToString()}");
 		Console.WriteLine($"Площа: {t2.CalculateArea()}");
 
 		TTriangle t3 = new TTriangle(t2);
 
-		Console.WriteLine($"Третій трикутник (копія мого,крутого,рикутника): {t3.ToString()}");
+		Console.WriteLine($"Третій трикутник (копія мого,крутого,трикутника): {t3.ToString()}");
 
 		Console.WriteLine("Порівняння");
 
@@ -128,7 +130,7 @@ class TTriangle
 		Console.WriteLine("Два ваших трикутника🤢😪:");
 		Console.WriteLine((t1 * 2).ToString());
 		Console.WriteLine("три моїх трикутника🤩🥰:");
-		Console.WriteLine((t2 * 3).ToString());
+		Console.WriteLine((3* t2).ToString());
 
 		Console.WriteLine("Призма");
 		TTrianglePrizm p1 = new TTrianglePrizm(3, 4, 5, 10);
@@ -160,7 +162,7 @@ class TTriangle
 			this.height = height;
 		}
 
-		public TTrianglePrizm(TTrianglePrizm NnTTrianglePrizm)
+		public TTrianglePrizm(TTrianglePrizm NnTTrianglePrizm) : base(NnTTrianglePrizm)
 		{
 			height = NnTTrianglePrizm.height;
 		}
@@ -183,7 +185,7 @@ class TTriangle
 
 		public override string ToString()
 		{
-			return $"{base.ToString()}, висота {height}";
+			return $"{base.ToString()},h={height}";
 		}
 	}
 }
